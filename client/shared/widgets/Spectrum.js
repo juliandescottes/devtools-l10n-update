@@ -5,7 +5,7 @@
 "use strict";
 
 const EventEmitter = require("devtools/shared/event-emitter");
-const { MultiLocalizationHelper } = require("devtools/shared/l10n");
+const l10n = require("devtools/shared/l10n");
 
 loader.lazyRequireGetter(this, "colorUtils", "devtools/shared/css/color", true);
 loader.lazyRequireGetter(
@@ -21,7 +21,7 @@ loader.lazyRequireGetter(
   true
 );
 
-const L10N = new MultiLocalizationHelper(
+const L10N = new l10n.MultiLocalizationHelper(
   "devtools/client/locales/accessibility.properties",
   "devtools/client/locales/inspector.properties"
 );

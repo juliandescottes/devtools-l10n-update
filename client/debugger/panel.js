@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at <http://mozilla.org/MPL/2.0/>. */
 
-const { MultiLocalizationHelper } = require("devtools/shared/l10n");
+const l10n = require("devtools/shared/l10n");
 
 loader.lazyRequireGetter(
   this,
@@ -24,12 +24,11 @@ loader.lazyRequireGetter(
 );
 
 const DBG_STRINGS_URI = [
-  "devtools/client/locales/debugger.properties",
-  // These are used in the AppErrorBoundary component
-  "devtools/client/locales/startup.properties",
   "devtools/client/locales/components.properties",
+  "devtools/client/locales/debugger.properties",
+  "devtools/client/locales/startup.properties",
 ];
-const L10N = new MultiLocalizationHelper(...DBG_STRINGS_URI);
+const L10N = new l10n.LocalizationHelper(DBG_STRINGS_URI);
 
 async function getNodeFront(gripOrFront, toolbox) {
   // Given a NodeFront
