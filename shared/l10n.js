@@ -28,12 +28,27 @@ LocalizationHelper.prototype = {
   },
 
   /**
-   * L10N shortcut function.
+   * L10N shortcut function. Can be used with a single string or an array of
+   * strings.
    *
-   * @param {String} name
+   * @param {String|Array} name
    * @return {String}
    */
   getString: async function(name) {
+    if (Array.isArray(name)) {
+      const strings = [];
+
+      for (const i = 0; i < name.length; i++) {
+        const properties = await this.fetchBundle();
+        if (name[i] in properties) {
+          strings.push(properties[name]);
+        } else {
+          throw new Error("No localization found for [" + name[i] + "]");
+        }
+      }
+      return strings;
+    }
+
     const properties = await this.fetchBundle();
     if (name in properties) {
       return properties[name];
