@@ -99,8 +99,8 @@ loader.lazyRequireGetter(
   true
 );
 
-const { MultiLocalizationHelper } = require("devtools/shared/l10n");
-const L10N = new MultiLocalizationHelper(
+const l10n = require("devtools/shared/l10n");
+const L10N = new l10n.LocalizationHelper(
   "devtools/client/locales/startup.properties",
   "devtools/startup/locales/key-shortcuts.properties"
 );
